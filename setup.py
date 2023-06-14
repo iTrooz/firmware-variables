@@ -8,7 +8,7 @@ setup(
     packages=['firmware_variables'],
     package_dir={'': 'src'},
     install_requires=[
-        'pywin32', 
+        'pywin32; platform_system=="Windows"', 
         'aenum', 
         'enum34; python_version < "3"',
     ],
