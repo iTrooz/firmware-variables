@@ -11,7 +11,7 @@ ERROR_INVALID_FUNCTION = 1
 GLOBAL_NAMESPACE = "{8BE4DF61-93CA-11d2-AA0D-00E098032B8C}"
 
 def strip_namespace(namespace):
-    return namespace.sub[1:-1]
+    return namespace[1:-1]
 
 class Attributes(IntFlag):
     NON_VOLATILE = 0x00000001
