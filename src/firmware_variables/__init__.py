@@ -1,5 +1,5 @@
-from .variables import get_variable, set_variable, delete_variable, Attributes, get_all_variables_names
-from .variables import GLOBAL_NAMESPACE, DEFAULT_ATTRIBUTES
+from .variables import delete_variable
+from .utils import GLOBAL_NAMESPACE, DEFAULT_ATTRIBUTES, Attributes
 
 from .platform import get_variable, set_variable, get_all_variables_names, adjust_privileges
 

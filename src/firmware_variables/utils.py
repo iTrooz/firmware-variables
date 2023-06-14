@@ -1,10 +1,30 @@
 import struct
 
+from aenum import IntFlag
+
 class UnsupportedFirmware(RuntimeError):
     pass
 
 
 ERROR_INVALID_FUNCTION = 1
+
+GLOBAL_NAMESPACE = "{8BE4DF61-93CA-11d2-AA0D-00E098032B8C}"
+
+def strip_namespace(namespace):
+    return namespace.sub[1:-1]
+
+class Attributes(IntFlag):
+    NON_VOLATILE = 0x00000001
+    BOOT_SERVICE_ACCESS = 0x00000002
+    RUNTIME_ACCESS = 0x00000004
+    HARDWARE_ERROR_RECORD = 0x00000008
+    AUTHENTICATED_WRITE_ACCESS = 0x00000010
+    TIME_BASED_AUTHENTICATED_WRITE_ACCESS = 0x00000020
+    APPEND_WRITE = 0x00000040
+
+DEFAULT_ATTRIBUTES = Attributes.NON_VOLATILE | \
+                     Attributes.BOOT_SERVICE_ACCESS | \
+                     Attributes.RUNTIME_ACCESS
 
 def utf16_string_from_bytes(raw):
     for i in range(0, len(raw), 2):
