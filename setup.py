@@ -5,7 +5,7 @@ setup(
     version='0.0.7',
     description='Windows library for controlling UEFI firmware variables',
     author='Netanel Dziubov',
-    packages=['firmware_variables'],
+    packages=['firmware_variables', 'firmware_variables.platform'],
     package_dir={'': 'src'},
     install_requires=[
         'pywin32; platform_system=="Windows"', 
