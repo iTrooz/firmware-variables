@@ -1,8 +1,8 @@
 import struct
 
-from .variables import get_variable, set_variable
+from .platform import get_variable, set_variable, verify_uefi_firmware
 from .load_option import LoadOption
-from .utils import verify_uefi_firmware, iter_unpack
+from .utils import iter_unpack
 
 
 def get_boot_order():
