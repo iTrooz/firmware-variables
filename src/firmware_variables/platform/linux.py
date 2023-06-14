@@ -12,7 +12,9 @@ def adjust_privileges():
 
 def get_variable(name, namespace=GLOBAL_NAMESPACE):
     with open("/sys/firmware/efi/efivars/{}-{}".format(name, strip_namespace(namespace)), "rb") as file:
-        return file.read(), Attributes(0)
+        data = file.read()
+
+        return data[4:], Attributes(int.from_bytes(data[0:4]))
 
 def set_variable(name, value, namespace=GLOBAL_NAMESPACE, attributes=DEFAULT_ATTRIBUTES):
     filepath = "/sys/firmware/efi/efivars/{}-{}".format(name, strip_namespace(namespace))
