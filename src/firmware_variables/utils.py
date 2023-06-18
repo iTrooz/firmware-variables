@@ -13,6 +13,9 @@ GLOBAL_NAMESPACE = "{8BE4DF61-93CA-11d2-AA0D-00E098032B8C}"
 def strip_namespace(namespace):
     return namespace[1:-1]
 
+class FVError(RuntimeError):
+    pass
+
 class Attributes(IntFlag):
     NON_VOLATILE = 0x00000001
     BOOT_SERVICE_ACCESS = 0x00000002

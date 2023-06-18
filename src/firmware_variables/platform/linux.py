@@ -1,7 +1,7 @@
 import os
 import contextlib
 
-from ..utils import GLOBAL_NAMESPACE, DEFAULT_ATTRIBUTES, strip_namespace, Attributes
+from ..utils import GLOBAL_NAMESPACE, DEFAULT_ATTRIBUTES, strip_namespace, Attributes, FVError
 
 @contextlib.contextmanager
 def adjust_privileges():
@@ -11,7 +11,11 @@ def adjust_privileges():
 
 
 def get_variable(name, namespace=GLOBAL_NAMESPACE):
-    with open("/sys/firmware/efi/efivars/{}-{}".format(name, strip_namespace(namespace)), "rb") as file:
+    file = "/sys/firmware/efi/efivars/{}-{}".format(name, strip_namespace(namespace))
+    if not os.path.exists(file):
+        raise FVError(f"Variable '{name}' in namespace '{namespace}' does not exist")
+
+    with open(file, "rb") as file:
         data = file.read()
 
         return data[4:], Attributes(int.from_bytes(data[0:4]))
