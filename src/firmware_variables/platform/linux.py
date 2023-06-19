@@ -22,9 +22,12 @@ def get_variable(name, namespace=GLOBAL_NAMESPACE):
 
 def set_variable(name, value, namespace=GLOBAL_NAMESPACE, attributes=DEFAULT_ATTRIBUTES):
     filepath = "/sys/firmware/efi/efivars/{}-{}".format(name, strip_namespace(namespace))
-    with open(filepath, "wb") as file:
-        attrs_bytes = int.to_bytes(attributes, length=4, byteorder='little')
-        file.write(attrs_bytes+value)
+    if value:
+        with open(filepath, "wb") as file:
+            attrs_bytes = int.to_bytes(attributes, length=4, byteorder='little')
+            file.write(attrs_bytes+value)
+    else:
+        os.remove(filepath)
 
 def get_all_variables_names():
     vars = []
