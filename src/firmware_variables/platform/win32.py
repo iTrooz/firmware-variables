@@ -1,6 +1,7 @@
-from ..variables import GLOBAL_NAMESPACE, DEFAULT_ATTRIBUTES, Attributes, _parse_firmware_variables_buffer
-from .win32_bindings import get_firmware_environment_variable_ex_w, set_firmware_environment_variable_ex_w, nt_enumerate_system_firmware_values_ex, gle
+from ..utils import GLOBAL_NAMESPACE, DEFAULT_ATTRIBUTES, Attributes
+from .win32_bindings import get_firmware_environment_variable_ex_w, set_firmware_environment_variable_ex_w, nt_enumerate_system_firmware_values_ex
 from .win32_utils import *
+from .win32_parsing import _parse_firmware_variables_buffer
 
 from ctypes import create_string_buffer, pointer, WinError, windll
 from ctypes.wintypes import DWORD
