@@ -1,3 +1,12 @@
+# Fork README
+
+This is a fork of https://github.com/netaneld122/firmware-variables
+
+It adds supports for Linux
+
+# Original README:
+
+
 # firmware_variables
 ![](https://github.com/netaneld122/firmware-variables/workflows/Build/badge.svg)
 [![Language grade: Python](https://img.shields.io/lgtm/grade/python/g/netaneld122/firmware-variables.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/netaneld122/firmware-variables/context:python)
